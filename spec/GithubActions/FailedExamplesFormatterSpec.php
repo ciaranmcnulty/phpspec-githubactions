@@ -79,17 +79,19 @@ class FailedExamplesFormatterSpec extends ObjectBehavior
     function it_outputs_error_with_escaping(
         ExampleEvent $event,
         IO $io,
-        SuiteEvent $suiteEvent
+        SuiteEvent $suiteEvent,
+        Resource $resource
     )
     {
         $event->getResult()->willReturn(ExampleEvent::FAILED);
         $event->getMessage()->willReturn("Oops:\r\nIt 100% broke");
+        $resource->getSpecFilename()->willReturn('/home/someuser/phpspec/My,Other:Spec.php');
 
         $this->logError($event);
         $this->printErrors($suiteEvent);
 
         $io->write("\n")->shouldHaveBeenCalled();
-        $io->write("::error file=MySpec.php,line=100,col=1::Failed: Oops:%0D%0AIt 100%25 broke\n")->shouldHaveBeenCalled();
+        $io->write("::error file=My%2COther%3ASpec.php,line=100,col=1::Failed: Oops:%0D%0AIt 100%25 broke\n")->shouldHaveBeenCalled();
     }
 }
 

@@ -57,8 +57,8 @@ final class FailedExamplesFormatter implements EventSubscriberInterface
             $this->io->write(
                 sprintf(
                     "::error file=%s,line=%d,col=1::%s: %s\n",
-                    $this->getSpecFilename($event),
-                    $event->getExample()->getLineNumber(),
+                    $this->escapeProperty($this->getSpecFilename($event)),
+                    $this->escapeProperty($event->getExample()->getLineNumber()),
                     $event->getResult() === ExampleEvent::FAILED ? 'Failed' : 'Broken',
                     $this->escapeMessage($event->getMessage())
                 )
@@ -80,5 +80,10 @@ final class FailedExamplesFormatter implements EventSubscriberInterface
     private function escapeMessage(string $message) : string
     {
         return strtr($message, ["%" => "%25", "\r" => '%0D', "\n" => '%0A']);
+    }
+
+    private function escapeProperty(string $property) : string
+    {
+        return strtr($this->escapeMessage($property), [ ':' => '%3A', ',' => '%2C' ]);
     }
 }
