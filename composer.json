@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "php": "^7.4",
-        "phpspec/phpspec": "^7.0"
+        "phpspec/phpspec": "^7.0 || ~8.1.0"
     },
     "license": "MIT",
     "authors": [
