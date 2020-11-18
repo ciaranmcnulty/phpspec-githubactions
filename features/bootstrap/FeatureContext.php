@@ -18,7 +18,7 @@ class FeatureContext implements Context
     public function __construct()
     {
         $this->filesystem = new FileSystem();
-        $this->path = sys_get_temp_dir() . base64_encode(random_bytes(32)) . '/';
+        $this->path = sys_get_temp_dir() . '/' . base64_encode(random_bytes(32)) . '/';
     }
 
     /**
