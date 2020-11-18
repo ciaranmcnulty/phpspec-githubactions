@@ -26,4 +26,4 @@ jobs:
         run: vendor/bin/phpspec run
 
       - name: Behat tests
-        run: vendor/bin/behat
+        run: vendor/bin/behat -f progress
