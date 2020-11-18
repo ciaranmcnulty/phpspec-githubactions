@@ -2,6 +2,8 @@
 
 This extension enhances PhpSpec failure messages inside Github Actions so that they can be displayed inline on a Pull Request as annotations.
 
+![Example output](docs/example.png)
+
 ## Installation
 
 `composer require --dev ciaranmcnulty/phpspec-githubactions`
