@@ -13,7 +13,7 @@ class FeatureContext implements Context
 {
     private $filesystem;
     private $output;
-    private $env = 'GITHUB_ACTIONS=false ';
+    private $env = 'GITHUB_ACTIONS= ';
 
     public function __construct()
     {
@@ -35,7 +35,7 @@ class FeatureContext implements Context
      */
     public function resetEnv()
     {
-        $this->env = 'GITHUB_ACTIONS=false ';
+        $this->env = 'GITHUB_ACTIONS= ';
     }
 
     /**

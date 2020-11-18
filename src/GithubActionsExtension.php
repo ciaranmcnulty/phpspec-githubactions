@@ -12,6 +12,7 @@ final class GithubActionsExtension implements Extension
     public function load(ServiceContainer $container, array $params)
     {
         if (getenv('GITHUB_ACTIONS')) {
+            var_dump(getenv('GITHUB_ACTIONS'));
             $container->define('event_dispatcher.listeners.github', function(IndexedServiceContainer $c) {
                 return new FailedExamplesFormatter(
                     $c->get('console.io'),
