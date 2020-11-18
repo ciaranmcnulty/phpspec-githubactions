@@ -1,0 +1,25 @@
+{
+    "name": "ciaranmcnulty/phpspec-githubactions",
+    "description": "A PhpSpec extension to enhance the experience when running in Github Actions",
+    "type": "library",
+    "require": {
+        "php": "^7.4",
+        "phpspec/phpspec": "^7.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ciaran McNulty",
+            "email": "mail@ciaranmcnulty.com"
+        }
+    ],
+    "require-dev": {
+        "behat/behat": "^3.8",
+        "symfony/filesystem": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cjm\\PhpSpec\\": "src/"
+        }
+    }
+}

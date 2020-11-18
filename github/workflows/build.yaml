@@ -1,0 +1,29 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    name: Build and test
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [7.4, 8.0]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "${{ matrix.php }}"
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: PhpSpec tests
+        run: vendor/bin/phpspec run
+
+      - name: Behat tests
+        run: vendor/bin/behat
