@@ -30,6 +30,7 @@ class FeatureContext implements Context
     }
 
     /**
+     * @Given the :var environment variable is not set
      * @afterScenario
      */
     public function resetEnv()
@@ -85,6 +86,16 @@ class FeatureContext implements Context
     {
         if(!str_contains($this->output, $string)) {
             throw new Exception("Did not find expected string in actual:\n" . $this->output);
+        }
+    }
+
+    /**
+     * @Then I should not see:
+     */
+    public function iShouldNotSee(PyStringNode $string)
+    {
+        if(str_contains($this->output, $string)) {
+            throw new Exception("Found unexpected string in output");
         }
     }
 }
